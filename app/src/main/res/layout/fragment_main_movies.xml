@@ -4,6 +4,9 @@
 
     <data>
 
+        <variable
+            name="onClick"
+            type="com.cralos.cargamosmvvm.movies.fragments.mainmovies.interfaces.OnClickMainMovie" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -11,20 +14,22 @@
         android:layout_height="match_parent">
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerMainMovies"
+            android:id="@+id/recyclerMovies"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_margin="16dp"
-            app:layout_constraintBottom_toTopOf="@+id/btnShowFavoriteMovies"
+            app:layout_constraintBottom_toTopOf="@+id/btnFavorites"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <Button
-            android:id="@+id/btnShowFavoriteMovies"
+            android:id="@+id/btnFavorites"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
+            android:background="@drawable/round_button"
+            android:onClick="@{()->onClick.showFavoriteMovies()}"
             android:text="Favorites"
             android:textAllCaps="false"
             app:layout_constraintBottom_toBottomOf="parent"

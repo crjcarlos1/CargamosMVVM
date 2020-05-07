@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <import type="com.cralos.cargamosmvvm.movies.fragments.moviesdetail.utils.MoviesDetailUtils" />
+
+        <variable
+            name="movie"
+            type="com.cralos.cargamosmvvm.movies.fragments.mainmovies.models.Movie" />
+
+        <variable
+            name="isFavoriteMovie"
+            type="Boolean" />
+
+        <variable
+            name="onClick"
+            type="com.cralos.cargamosmvvm.movies.fragments.moviesdetail.interfaces.OnClickDetail" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/imgvPoster"
+            imageUrlMovie="@{movie.posterPath}"
+            android:layout_width="200dp"
+            android:layout_height="350dp"
+            android:layout_margin="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/txvAverage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:text="@{MoviesDetailUtils.getStringFromFloat(movie.voteAverage)}"
+            android:textColor="@android:color/holo_red_dark"
+            app:layout_constraintStart_toEndOf="@+id/imgvPoster"
+            app:layout_constraintTop_toTopOf="@+id/imgvPoster" />
+
+        <TextView
+            android:id="@+id/txvTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@{movie.title}"
+            android:textColor="@android:color/black"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imgvPoster" />
+
+        <TextView
+            android:id="@+id/txvResume"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:padding="16dp"
+            android:text="@{movie.overview}"
+            android:textColor="@android:color/darker_gray"
+            android:textStyle="normal"
+            app:layout_constraintBottom_toTopOf="@+id/btnSaveMovie"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txvTitle" />
+
+        <Button
+            android:id="@+id/btnSaveMovie"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:background="@drawable/round_button"
+            android:onClick="@{ () -> onClick.onClickSaveMovie() }"
+            android:text="Save"
+            android:textAllCaps="false"
+            android:visibility="@{ isFavoriteMovie ? View.GONE : View.VISIBLE }"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <Button
+            android:id="@+id/btnDeleteMovie"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:background="@drawable/round_button"
+            android:onClick="@{ () -> onClick.onClickDeleteMovie() }"
+            android:text="Delete"
+            android:textAllCaps="false"
+            android:visibility="@{ isFavoriteMovie ? View.VISIBLE : View.GONE }"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
