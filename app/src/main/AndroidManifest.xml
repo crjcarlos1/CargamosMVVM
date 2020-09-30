@@ -3,6 +3,7 @@
     package="com.cralos.cargamosmvvm">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCEPT_HANDOVER"/>
 
     <application
         android:usesCleartextTraffic="true"
