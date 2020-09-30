@@ -1,4 +1,4 @@
 <resources>
     <string name="app_name">CargamosMVVM</string>
-    <!-- Comment -->
+    <string name="Hola">Saludos a todos</string>
 </resources>
