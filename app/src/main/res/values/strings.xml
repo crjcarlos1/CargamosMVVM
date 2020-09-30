@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">CargamosMVVM</string>
     <string name="Hola">Saludos a todos</string>
+    <string name="Hola2">Saludos!!!</string>
 </resources>
